@@ -4,12 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TVNApp.API.Utils;
 
 namespace TVNApp.API.Controllers
 {
     [ApiController]
     public class WeatherController : ControllerBase
     {
+
+        WeatherHandler WeatherHandler; 
+        ClothHandler ClothHandler;
+
         [HttpGet]
         [Route("api/weather")]
         public ActionResult<string> GetData()
@@ -26,8 +31,11 @@ namespace TVNApp.API.Controllers
         [Route("temperature")]
         public ActionResult<string> GetTemperature()
         {
-            WeatherHandler handler = new WeatherHandler(this);
-            return Ok(handler.MModel.ToString());
+            WeatherHandler = new WeatherHandler(this); // creating weatherHandler, he's doing its job
+
+            ClothHandler = new ClothHandler(); // then calculating an advice
+
+            return Ok(ClothHandler.getAdvice(WeatherHandler));
         }
     }
 }
