@@ -77,6 +77,15 @@ button:hover {
     font-size: 60px;
 }
 
+.extensible {
+    transition: 0.5s;
+}
+
+.header {
+    background-color: black;
+    opacity: 0.75;
+}
+
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
     .overlay a {
@@ -88,4 +97,16 @@ button:hover {
         top: 15px;
         right: 35px;
     }
+}
+
+#scroll {
+    font-size: 40px;
+    transition: 0.5s;
+    right: 20px;
+    cursor: pointer;
+}
+
+#scroll:hover {
+    font-size: 30px;
+    color:goldenrod;
 }
