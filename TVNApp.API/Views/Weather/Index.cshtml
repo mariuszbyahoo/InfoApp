@@ -1,10 +1,11 @@
 ﻿@using TVNApp.ViewModels
 @model MainViewModel
 
+@await Html.PartialAsync("_Header")
+
 <h1>Today's weather forecast:</h1>
 <br />
 <hr />
-<br />
 <div class="clothingAdvice">
     <p class="title">Temperature: @Model.ViewModel.Temp</p>
     <p class="pressure">Forecasted air pressure for today is: @Model.ViewModel.Pressure hPa</p>
