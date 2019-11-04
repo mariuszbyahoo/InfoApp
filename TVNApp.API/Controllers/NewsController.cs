@@ -12,19 +12,15 @@ using TVNApp.ViewModels;
 namespace TVNApp.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class NewsController : Controller
     {
-        WeatherHandler WeatherHandler;
         ClothHandler ClothHandler;
 
-        [HttpGet(Name = "Gui")]
+        [HttpGet(Name = "News")]
         [Route("home")]
         public ViewResult Index()
-        {
-            var client = new RestClient("http://localhost:60416/news");
-            var request = new RestRequest(Method.GET);
-
+        { 
             ArticlesViewModel list = new ArticlesViewModel();
             list.ListViewModel = GetListOfArticles();
 
@@ -35,16 +31,24 @@ namespace TVNApp.API.Controllers
         [Route("temperature")]
         public ActionResult<string> GetTemperature()
         {
-            WeatherHandler = new WeatherHandler(this); // creating weatherHandler, he's doing its job
+            ClothHandler = new ClothHandler(new WeatherHandler(this)); // then calculating an advice
 
-            ClothHandler = new ClothHandler(); // then calculating an advice
-
-            return Ok(ClothHandler.getAdvice(WeatherHandler));
+            return Ok(ClothHandler.GetAdvice());
         }
 
         [HttpGet]
-        [Route("weather")]
-        public ActionResult<string> GetData()
+        [Route("news/list")]
+        public List<ArticleModel> GetListOfArticles()
+        {
+            var handler = new XmlHandler();
+            var articleList = handler.GetArticles(this);
+
+            return articleList;
+        }
+
+        [HttpGet]
+        [Route("weather/data")]
+        public ActionResult<string> GetWeatherData()
         {
             var client = new RestClient("http://api.openweathermap.org/data/2.5/weather?q=Warsaw,pl&APPID=bcb0c61841c80cc665a6cec5e9fbd83c");
             var request = new RestRequest(Method.GET);
@@ -67,16 +71,6 @@ namespace TVNApp.API.Controllers
             doc.LoadXml(response.Content);
 
             return doc;
-        }
-
-        [HttpGet]
-        [Route("news/list")]
-        public List<ArticleModel> GetListOfArticles()
-        {
-            var handler = new XmlHandler();
-            var articleList = handler.GetArticles(this);
-
-            return articleList;
         }
     }
 }

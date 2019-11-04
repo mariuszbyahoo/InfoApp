@@ -16,7 +16,7 @@ namespace TVNApp.API
         public WeatherHandler(NewsController controller)
         {
             MModel = new MainModel();
-            data = controller.GetData().Value;
+            data = controller.GetWeatherData().Value;
             GetTemperature();
         }
 

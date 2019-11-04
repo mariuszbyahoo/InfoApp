@@ -1,41 +1,42 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using RestSharp;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using TVNApp.API.Utils;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using TVNApp.API;
+using TVNApp.API.Controllers;
+using TVNApp.API.Utils;
+using TVNApp.ViewModels;
 
-//namespace TVNApp.API.Controllers
-//{
-//    [ApiController]
-//    public class WeatherController : ControllerBase
-//    {
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-//        WeatherHandler WeatherHandler; 
-//        ClothHandler ClothHandler;
+namespace TVNApp.Controllers
+{
+    public class WeatherController : Controller
+    {
+        NewsController nController;
+        WeatherHandler wHandler;
+        ClothHandler cHandler;
 
-//        [HttpGet]
-//        [Route("api/weather")]
-//        public ActionResult<string> GetData()
-//        {
-//            var client = new RestClient("http://api.openweathermap.org/data/2.5/weather?q=Warsaw,pl&APPID=bcb0c61841c80cc665a6cec5e9fbd83c");
-//            var request = new RestRequest(Method.GET);
+        public WeatherController()
+        {
+            this.nController = new NewsController();
+            this.wHandler = new WeatherHandler(nController);
+            this.cHandler = new ClothHandler(wHandler);
+        }
 
-//            var response = client.Execute(request);
 
-//            return response.Content;
-//        }
 
-//        [HttpGet]
-//        [Route("temperature")]
-//        public ActionResult<string> GetTemperature()
-//        {
-//            WeatherHandler = new WeatherHandler(this); // creating weatherHandler, he's doing its job
-
-//            ClothHandler = new ClothHandler(); // then calculating an advice
-
-//            return Ok(ClothHandler.getAdvice(WeatherHandler));
-//        }
-//    }
-//}
+        // GET: /<controller>/
+        public ViewResult Index()
+        {
+            MainViewModel model = new MainViewModel();
+            model.ClothHandler = cHandler;
+            model.ViewModel = new MainModel();
+            model.ViewModel.Temp = cHandler.TempC;
+            model.ViewModel.Humidity = cHandler.Humidity;
+            model.ViewModel.Pressure = cHandler.Pressure;
+            return View(model);
+        }
+    }
+}

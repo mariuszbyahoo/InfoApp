@@ -8,6 +8,6 @@ namespace TVNApp.ViewModels
 {
     public class ArticlesViewModel
     {
-        public IEnumerable<ArticleModel> ListViewModel { get; set; } // to jest nullem w Index.cshtml
+        public IEnumerable<ArticleModel> ListViewModel { get; set; } 
     }
 }

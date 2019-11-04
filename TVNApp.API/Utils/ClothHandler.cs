@@ -18,14 +18,26 @@ namespace TVNApp.API.Utils
         private string flipFlops = "Flip-flops";
         private string sneakers = "sneakers";
         private string winterBoots = "Winter Boots";
+        public double TempK;
+        public int TempC;
+        public int Humidity;
+        public int Pressure;
 
-        public string getAdvice (WeatherHandler handler)
+        public ClothHandler(WeatherHandler handler)
         {
-            var tempK = handler.MModel.Temp; 
-            var tempC = (int)tempK - 273;
+            TempK = handler.MModel.Temp;
+            Humidity = handler.MModel.Humidity;
+            Pressure = handler.MModel.Pressure;
+            TempC = (int)TempK - 273;
+        }
+
+        public string GetAdvice ()
+        {
+            //var tempK = handler.MModel.Temp; 
+            //var tempC = (int)tempK - 273;
             var info = "In order to have a lovely walk you have to wear: ";
-            info = AppendInfo(info, tempK);
-            info += $"\nBecause, the current temperature is: {tempC} *C"; 
+            info = AppendInfo(info, TempK);
+            info += $"\nBecause, the current temperature is: {TempC} *C"; 
 
             return info;
         }
