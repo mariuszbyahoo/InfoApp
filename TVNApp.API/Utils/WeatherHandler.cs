@@ -13,7 +13,7 @@ namespace TVNApp.API
         static string data;
         public MainModel MModel;
 
-        public WeatherHandler(WeatherController controller)
+        public WeatherHandler(NewsController controller)
         {
             MModel = new MainModel();
             data = controller.GetData().Value;

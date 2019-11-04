@@ -1,0 +1,15 @@
+﻿@using TVNApp.ViewModels
+@model ArticlesViewModel
+
+
+<h1>A tutaj mamy listę naszych artykułów</h1>
+<br />
+<hr />
+@foreach(var article in Model.ListViewModel)
+{
+    <div class="article">
+        <p class="title">Artykuł numer @article.ID</p>
+        <p class="link"><a href="@article.Link">Link do artykułu</a></p>
+        <p class="content">@article.Content</p>
+    </div>
+}
