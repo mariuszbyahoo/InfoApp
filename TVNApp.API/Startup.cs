@@ -35,6 +35,8 @@ namespace TVNApp.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthorization();

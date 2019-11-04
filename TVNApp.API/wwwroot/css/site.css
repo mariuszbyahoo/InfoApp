@@ -1,0 +1,13 @@
+﻿body {
+    background-color: #484848;
+    color: white;
+}
+a {
+    color: darkorange;
+}
+
+button {
+    border: none;
+    background-color: black;
+    color: lightgray;
+}
