@@ -8,16 +8,16 @@ namespace TVNApp.API.Utils
 {
     public class ClothHandler
     {
-        private string tShirt = "T-Shirt";
-        private string shorts = "Shorts";
-        private string jeans = "Jeans";
-        private string lightJacket = "Light, leather jacket or pullover";
-        private string stichedJacket = "Stitched jacket";
-        private string winterJacket = "Winter jacket";
-        private string woolCoat = "Thick, wool coat";
-        private string flipFlops = "Flip-flops";
-        private string sneakers = "sneakers";
-        private string winterBoots = "Winter Boots";
+        private readonly string tShirt = "T-Shirt";
+        private readonly string shorts = "Shorts";
+        private readonly string jeans = "Jeans";
+        private readonly string lightJacket = "Light, leather jacket or pullover";
+        private readonly string stichedJacket = "Stitched jacket";
+        private readonly string winterJacket = "Winter jacket";
+        private readonly string woolCoat = "Thick, wool coat";
+        private readonly string flipFlops = "Flip-flops";
+        private readonly string sneakers = "sneakers";
+        private readonly string winterBoots = "Winter Boots";
         public double TempK;
         public int TempC;
         public int Humidity;

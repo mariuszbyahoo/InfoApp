@@ -20,9 +20,11 @@ namespace TVNApp.API.Controllers
         [HttpGet(Name = "News")]
         [Route("home")]
         public ViewResult Index()
-        { 
-            ArticlesViewModel list = new ArticlesViewModel();
-            list.ListViewModel = GetListOfArticles();
+        {
+            ArticlesViewModel list = new ArticlesViewModel
+            {
+                ListViewModel = GetListOfArticles()
+            };
 
             return View(list);
         }

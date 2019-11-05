@@ -21,8 +21,10 @@ namespace TVNApp.API.Utils
 
             foreach (XmlNode item in itemNodes)
             {
-                var article = new ArticleModel();
-                article.ID = articleCount;
+                var article = new ArticleModel
+                {
+                    ID = articleCount
+                };
                 articleCount++;
                 article.Title = item.SelectSingleNode("title").InnerText;
                 article.Content = Regex.Replace(item.SelectSingleNode("description").InnerText, "<.*?>", String.Empty);
