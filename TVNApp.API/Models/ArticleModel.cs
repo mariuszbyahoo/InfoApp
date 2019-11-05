@@ -13,10 +13,5 @@ namespace TVNApp.API.Models
         public string Content { get; set; }
 
         public DateTime PublicationDate { get; set; }
-
-        public override string ToString()
-        {
-            return $"Artykuł {ID}:\n{Title} ({PublicationDate})\n\n{Content}\nLink do artykułu: \n{Link}\n\n";
-        }
     }
 }

@@ -1,36 +1,22 @@
 ﻿body {
     background-color: #484848;
-    color: white;
+    color: #e6e6e6;
+    font-family: 'Open Sans', sans-serif;
 }
 a {
-    color: darkorange;
+    color: #fad7b7;
 }
 
 a:hover {
-    color: #b95c00;
+    color: white;
     transition: 0.5s;
 
 }
-
-button {
-    font-size: 20px;
-    width: 200px;
-    height: 50px;
-    border: none;
-    background-color: #242424;
-    color: sandybrown;
-    border-radius: 25%;
+h2 {
+    color: #fad7b7;
+    text-shadow: 1px #180c02;
 }
 
-button:hover {
-    border: 3px;
-    border-color: black;
-    background-color: #b4b4b4;
-    color: saddlebrown;
-    box-shadow: 5px 5px black;
-    cursor: pointer;
-    transition: 0.5s;
-}
 /* The Overlay (background) */
 .overlay {
     /* Height & width depends on how you want to reveal the overlay (see JS below) */
@@ -78,12 +64,18 @@ button:hover {
 }
 
 .extensible {
-    transition: 0.5s;
+    background: #262626;
+    border: 2px solid #0d0d0d;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 3px;
 }
 
-.header {
-    background-color: black;
-    opacity: 0.75;
+hr {
+    border: 5px solid;
+    border-radius: 5px;
+    border-color: #b3b3b3;
+    opacity: 0.2;
 }
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
@@ -101,12 +93,27 @@ button:hover {
 
 #scroll {
     font-size: 40px;
-    transition: 0.5s;
+    transition: 1s;
     right: 20px;
     cursor: pointer;
+    color: #daa520;
 }
 
 #scroll:hover {
-    font-size: 30px;
-    color:goldenrod;
+    color: #6f5411;
 }
+
+#navButton {
+    font-size: 35px;
+    border: none;
+    color: #ffffff;
+    opacity: 1;
+}
+
+    #navButton:hover {
+        border: 3px;
+        color: #3366ff;
+        text-shadow: 5px 5px black;
+        cursor: pointer;
+        transition: 1s;
+    }

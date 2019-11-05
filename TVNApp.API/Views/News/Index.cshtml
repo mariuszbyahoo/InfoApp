@@ -7,18 +7,15 @@
 
 @await Html.PartialAsync("_Header")
 <div id="header">
-    <h1>A tutaj mamy listę naszych artykułów</h1>
+    <h2>Poniżej zamieszczam spis najnowszych wydarzeń z Polski:</h2>
     <br />
 </div>
 <hr  id="divider"/>
 @foreach (var article in Model.ListViewModel)
 {
-<div class="extensible" onclick="showHideArticle(@article.ID)">@article.Title                                                           <i id="scroll">&#10534;</i>
+<div class="extensible"><i class="fas fa-angle-double-down" id="scroll" onclick="showHideArticle(@article.ID)"></i> @article.Title
     <div class="article" id="@article.ID">
-        <p class="title">
-            Artykuł numer @article.ID      
-        </p>
-        <p class="link"><a href="@article.Link">Link do artykułu</a></p>
+        <p class="link">(opublikowano: @article.PublicationDate) <a href="@article.Link">Link do artykułu</a></p>
         <p class="content">@article.Content</p>
     </div>
 </div>

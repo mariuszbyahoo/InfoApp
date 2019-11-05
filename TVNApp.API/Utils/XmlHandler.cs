@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using TVNApp.API.Controllers;
@@ -24,7 +25,7 @@ namespace TVNApp.API.Utils
                 article.ID = articleCount;
                 articleCount++;
                 article.Title = item.SelectSingleNode("title").InnerText;
-                article.Content = item.SelectSingleNode("description").InnerText;
+                article.Content = Regex.Replace(item.SelectSingleNode("description").InnerText, "<.*?>", String.Empty);
                 article.Link = item.SelectSingleNode("link").InnerText;
                 article.PublicationDate = Convert.ToDateTime(item.SelectSingleNode("pubDate").InnerText);
 
