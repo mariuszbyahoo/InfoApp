@@ -14,7 +14,7 @@ namespace TVNApp.API
         static string data;
         public MainModel MModel;
 
-        public WeatherHandler(NewsController controller)
+        public WeatherHandler()
         {
             var client = new RestClient("http://api.openweathermap.org/data/2.5/weather?q=Warsaw,pl&APPID=bcb0c61841c80cc665a6cec5e9fbd83c");
             var request = new RestRequest(Method.GET);

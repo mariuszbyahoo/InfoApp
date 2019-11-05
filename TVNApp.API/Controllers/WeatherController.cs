@@ -14,14 +14,12 @@ namespace TVNApp.Controllers
 {
     public class WeatherController : Controller
     {
-        NewsController nController;
-        WeatherHandler wHandler;
-        ClothHandler cHandler;
+        private readonly WeatherHandler wHandler;
+        private readonly ClothHandler cHandler;
 
         public WeatherController()
         {
-            this.nController = new NewsController();
-            this.wHandler = new WeatherHandler(nController);
+            this.wHandler = new WeatherHandler();
             this.cHandler = new ClothHandler(wHandler);
         }
 
